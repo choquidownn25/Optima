@@ -1,0 +1,114 @@
+﻿-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+        USE [Prueba]
+GO
+
+/****** Object:  Table [dbo].[Departments]    Script Date: 20/02/2021 9:41:15 a. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Departments](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](25) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [Prueba]
+GO
+
+/****** Object:  Table [dbo].[Prueba]    Script Date: 20/02/2021 9:44:02 a. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Prueba](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[author] [nvarchar](50) NULL,
+	[width] [int] NULL,
+	[height] [int] NULL,
+	[url] [ntext] NULL,
+ CONSTRAINT [PK_Prueba] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+USE [Prueba]
+GO
+
+/****** Object:  Table [dbo].[TipoDocumento]    Script Date: 20/02/2021 9:44:22 a. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TipoDocumento](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Codigo] [int] NOT NULL,
+	[Nombre] [nvarchar](50) NOT NULL,
+	[Descripcion] [text] NULL,
+	[Sigla] [nchar](3) NULL,
+	[Activo] [bit] NOT NULL,
+ CONSTRAINT [PK_TipoDocumento] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+USE [Prueba]
+GO
+
+/****** Object:  Table [dbo].[Employees]    Script Date: 20/02/2021 9:44:55 a. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Employees](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FName] [varchar](35) NOT NULL,
+	[LName] [varchar](35) NOT NULL,
+	[PhoneNumber] [varchar](11) NULL,
+	[ManagerId] [int] NULL,
+	[DepartmentId] [int] NOT NULL,
+	[Salary] [int] NOT NULL,
+	[HireDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Employees]  WITH CHECK ADD FOREIGN KEY([DepartmentId])
+REFERENCES [dbo].[Departments] ([Id])
+GO
+
+ALTER TABLE [dbo].[Employees]  WITH CHECK ADD FOREIGN KEY([ManagerId])
+REFERENCES [dbo].[Employees] ([Id])
+GO
+
+
+
+
+-- --------------------------------------------------
+-- Script has ended
+-- ----------------

@@ -1,0 +1,95 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+<div class="register-box">
+
+    <div class="register-box-body">
+        <div class="register-logo">
+            <a href="/"><b>Prueba</b></a>
+        </div>
+        <p class="login-box-msg">
+            Registrar un nuevo usuario
+        </p>
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+
+            <div class="form-group has-feedback">
+                <label asp-for="TipoRegistro"></label>
+                <span class="form-control-feedback"></span>
+                <select class="form-control" data-rel="chosen" id="TipoRegistro" name="TipoRegistro">
+                    <option>Usuario</option>
+                    <option>Admin</option>
+                </select>
+                <span asp-validation-for="TipoRegistro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label asp-for="Nombre"></label>
+                <input asp-for="Nombre" type="text" class="form-control" placeholder="Nombre" />
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group has-feedback">
+                <label asp-for="Apellido"></label>
+                <input asp-for="Apellido" type="text" class="form-control" placeholder="Apellido" />
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+
+       
+
+            <div class="form-group has-feedback">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email" />
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Retype password" />
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-6">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> Estoy de acuerdo con los <a href="#">terminos</a>
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i> Sign up using
+                    Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+                    <i class="fa fa-google-plus"></i> Sign up using
+                    Google+
+                </a>
+            </div>
+
+    </div>
+    <!-- /.form-box  -->
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="~/adminlte/plugins/iCheck/icheck.js"></script>
+

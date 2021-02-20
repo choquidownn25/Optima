@@ -1,0 +1,36 @@
+﻿.col-xs-4 {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 40px;
+}
+
+.head {
+    margin-right: 78px;
+}
+
+#reset {
+    float: left;
+}
+
+#board {
+    margin-top: 15px;
+}
+
+h1 {
+    font-family: "Vollkorn SC";
+}
+
+.game {
+    text-align: center;
+    margin: 0 auto;
+    width: 500px;
+    padding-top: 25px;
+}
+
+.selected {
+    background-color: #42f445;
+}
